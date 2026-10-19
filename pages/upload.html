@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EY DWG Assistant | Quantity Extraction</title>
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body class="app-shell">
+    <div class="app-layout">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="brand-block">
+                <div class="brand-mark">EY</div>
+                <div>
+                    <p class="eyebrow">Geometry Engine</p>
+                    <h2>EY DWG</h2>
+                </div>
+            </div>
+
+            <nav class="nav-links">
+                <a href="dashboard.html">Dashboard</a>
+                <a class="active" href="upload.html">Upload Center</a>
+                <a href="#">Reports</a>
+                <a href="#">Templates</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <strong>Geometry Quantity Engine</strong>
+                <p>
+                    Upload PDF drawings with quantity annotations and generate Excel workbooks automatically.
+                </p>
+            </div>
+        </aside>
+
+        <!-- MAIN PANEL -->
+        <main class="main-panel">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">PDF Processing</p>
+                    <h1>Quantity Extraction</h1>
+                </div>
+                <div class="topbar-actions">
+                    <span class="topbar-pill">PDF → Quantity → Excel</span>
+                </div>
+            </header>
+
+            <section class="panel upload-panel">
+                <!-- NEW DRAWING CLASSIFICATION FIELDS -->
+                <div class="panel" style="padding:20px; margin-bottom:20px;">
+                    <h3>Drawing Classification</h3>
+                    <p style="color:var(--muted); margin-top:8px;">
+                        Select the project and building before uploading the structural PDF.
+                    </p>
+
+                    <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:18px;">
+                        <div>
+                            <label for="projectSelect" style="display:block; margin-bottom:8px; font-weight:700;">Project</label>
+                            <select id="projectSelect" required style="width:100%; height:44px; padding:0 12px; border:1px solid var(--border); border-radius:10px; background:var(--panel); color:inherit;">
+                                <option value="">Select project</option>
+                                <option value="KADAPA">KADAPA</option>
+                                <option value="PUNE">PUNE</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="buildingSelect" style="display:block; margin-bottom:8px; font-weight:700;">Building Name</label>
+                            <select id="buildingSelect" required style="width:100%; height:44px; padding:0 12px; border:1px solid var(--border); border-radius:10px; background:var(--panel); color:inherit;">
+                                <option value="">Select building</option>
+                                <option value="0">WAGON TIPPLER LOAD CENTER</option>
+                                <option value="1">AAQMS</option>
+                                <option value="2">HOT AIR GENERETOR</option>
+                                <option value="3">DRAIN & ROAD</option>
+                                <option value="4">AFR</option>
+                                <option value="5">PL HOPPER</option>
+                                <option value="6">LC3: RAW MATERIAL HANDLING (NEAR ADDITIVE STORAGE)</option>
+                                <option value="7">CEMENT MILL RECIRCULATION BUILDING</option>
+                                <option value="8">OSS</option>
+                                <option value="9">SURGE HOPPER</option>
+                                <option value="10">CLINKER LOADING SILO</option>
+                                <option value="11">CLINKER TRANSFER TOWER</option>
+                                <option value="12">LIMESTONE STACKER AND RECLAIMER</option>
+                                <option value="13">COAL MILL BUILDING</option>
+                                <option value="14">COOLER, ESP & CHIMNEY</option>
+                                <option value="15">MECHANICAL FABRICATION YARD</option>
+                                <option value="16">RAW COAL HOPPER</option>
+                                <option value="17">COAL BUILDING</option>
+                                <option value="18">CEMENT MILL BAG HOUSE AND DUCTING</option>
+                                <option value="19">DEEP PAN CONVEYOR (DPC)</option>
+                                <option value="20">CM BAG HOUSE & DUCTING</option>
+                                <option value="21">KILN PIER & TAD</option>
+                                <option value="22">ESP</option>
+                                <option value="23">RM SILO</option>
+                                <option value="24">Others</option>
+                                <option value="25">HIGH MAST TOWER</option>
+                                <option value="26">LOAD CENTRES- RMH LC NEAR LINE 2 LS STOCK PILE</option>
+                                <option value="27">LABOUR COLONY</option>
+                                <option value="28">DUCTING COMPLEX</option>
+                                <option value="29">UTILITY PARKING & STORE BUILDING</option>
+                                <option value="30">WATER STORAGE TANK</option>
+                                <option value="31">COAL REJECT BIN</option>
+                                <option value="32">WATER TREATMENT PLANT</option>
+                                <option value="33">CEMENT WAGON LOADING</option>
+                                <option value="34">WAGON TIPPLER</option>
+                                <option value="35">CLINKER WAGON LOADING</option>
+                                <option value="36">LOAD CENTER 01A MRSS</option>
+                                <option value="37">ROAD</option>
+                                <option value="38">INDOOR SUB-STATION(MRSS)</option>
+                                <option value="39">LOAD CENTRES- PACKING PLANT</option>
+                                <option value="40">LOAD CENTRES- CEMENT MILL & BAG HOUSE</option>
+                                <option value="41">LOAD CENTRES- KILN COOLER AND COAL MILL</option>
+                                <option value="42">LOAD CENTRES - RAW MILL CIRCUIT AND BAG HOUSE(INSIDE BUILDING)</option>
+                                <option value="43">LOAD CENTRES- RMH LC NEAR LINE 2 LS STOCK PILE</option>
+                                <option value="44">LOAD CENTRES- RMH LC NEAR LINE 1 COAL STOCK PILE</option>
+                                <option value="45">LOAD CENTRES- CRUSHER</option>
+                                <option value="46">COAL MILL SUBSTATION</option>
+                                <option value="47">TRANSMISSION LINE(STRINGING)</option>
+                                <option value="48">SWITCHYARD & MRSS</option>
+                                <option value="49">SWITCH YARD</option>
+                                <option value="50">MAIN SUBSTATION</option>
+                                <option value="51">PIPE RACKS</option>
+                                <option value="52">AIR COOLED CONDENSER-WHRS</option>
+                                <option value="53">TG BUILDING-WHRS</option>
+                                <option value="54">AQC BOILER-WHRS</option>
+                                <option value="55">PH-BOILER</option>
+                                <option value="56">CABLE GALLERY</option>
+                                <option value="57">CCBC CONVEYORS</option>
+                                <option value="58">BELT CONVEYERS</option>
+                                <option value="59">TRUCK LOADER</option>
+                                <option value="60">PACKING PLANT</option>
+                                <option value="61">FLY ASH SILOS-NOS</option>
+                                <option value="62">CEMENT SILO</option>
+                                <option value="63">CEMENT MILL BAG HOUSE</option>
+                                <option value="64">CEMENT MILL BUILDING</option>
+                                <option value="65">CEMENT MILL BUILDING</option>
+                                <option value="66">CEMENT MILL HOPPER</option>
+                                <option value="67">CLINKER SILO</option>
+                                <option value="68">COAL MILL BAG HOUSE</option>
+                                <option value="69">COAL MILL FOUNDATION</option>
+                                <option value="70">COAL MILL RECIRCULATION BUILDING</option>
+                                <option value="71">COAL MILL HOPPER</option>
+                                <option value="72">KP3  + TAD</option>
+                                <option value="73">KP2  + TAD</option>
+                                <option value="74">KP1 + TAD</option>
+                                <option value="75">PRE-HEATER BUILDING</option>
+                                <option value="76">BLENDING SILO</option>
+                                <option value="77">RAW MILL BAGHOUSE</option>
+                                <option value="78">RAW MILL BUILDING</option>
+                                <option value="79">RM HOPPER</option>
+                                <option value="80">BOX FEEDER/BRU</option>
+                                <option value="81">ADDITIVE STACKER AND RECLAIMER</option>
+                                <option value="82">COAL RECLAIMER UPGRADATION</option>
+                                <option value="83">REJECT HOPPER (SURGE BIN)</option>
+                                <option value="84">LIMESTONE CRUSHER</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="buildingShortNameSelect" style="display:block; margin-bottom:8px; font-weight:700;">Building Short Name</label>
+                            <select id="buildingShortNameSelect" required disabled style="width:100%; height:44px; padding:0 12px; border:1px solid var(--border); border-radius:10px; background:var(--panel); color:inherit;">
+                                <option value="">Select building first</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="upload-dropzone" id="dropzone">
+                    <div class="dropzone-icon">PDF</div>
+                    <h3>Upload Structural PDF</h3>
+                    <p style="color: var(--muted); margin-top: 8px;">
+                        Drag and drop your drawing PDF or browse your device.
+                    </p>
+                    <input id="pdfInput" type="file" accept=".pdf" hidden />
+                    <p id="fileLabel" style="margin-top:12px; color:var(--accent);">No file selected</p>
+                </div>
+
+                <div class="panel" style="padding:16px; margin-top:20px;">
+                    <h3>Supported Annotation Format</h3>
+                    <p style="color:var(--muted); margin-top:8px;">
+                        Solid Cylinder - Raft - Dia 28000 x Depth 3500
+                        <br><br>
+                        Hollow Cylinder - Shell Wall - OD 28000 x ID 26000 x Height 12000
+                        <br><br>
+                        Cuboid - Pedestal - Length 5000 x Width 3000 x Height 2000
+                    </p>
+                </div>
+
+                <div class="hero-actions">
+                    <button class="btn btn-primary" id="uploadButton">Generate Quantities</button>
+                </div>
+
+                <div class="panel" style="padding:16px; margin-top:20px;">
+                    <h3 style="margin-bottom:12px;">Quantity Extraction Status</h3>
+                    <p id="statusText" style="color:var(--muted);">Awaiting PDF upload.</p>
+                    <div id="resultsSection" class="results-section" style="display:none; margin-top:20px;">
+                        <div class="summary-grid">
+                            <div class="summary-card"><h4>Annotations</h4><span id="annotationCount">0</span></div>
+                            <div class="summary-card"><h4>Successful</h4><span id="successfulCount">0</span></div>
+                            <div class="summary-card"><h4>Review Required</h4><span id="reviewCount">0</span></div>
+                        </div>
+
+                        <div class="result-card" style="margin-top:20px;">
+                            <div class="result-icon">⬇</div>
+                            <div class="result-meta">
+                                <h4>Quantity Workbook</h4>
+                                <p id="workbookName">quantity-result.xlsx</p>
+                                <div class="result-details">
+                                    <span id="workbookTime">Generated just now</span>
+                                    <span id="workbookSize">Ready</span>
+                                </div>
+                            </div>
+                            <div class="result-actions">
+                                <a id="downloadButton" class="btn btn-primary" href="#">Download Excel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>File</th>
+                                <th>Annotations</th>
+                                <th>Successful</th>
+                                <th>Review</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script>
+        const buildingDirectory = [
+            { name: 'WAGON TIPPLER LOAD CENTER', abbreviation: 'WTC' },
+            { name: 'AAQMS', abbreviation: 'AAQMS' },
+            { name: 'HOT AIR GENERETOR', abbreviation: 'HAG' },
+            { name: 'DRAIN & ROAD', abbreviation: 'Road & Drain' },
+            { name: 'AFR', abbreviation: 'AFR' },
+            { name: 'PL HOPPER', abbreviation: 'PL' },
+            { name: 'LC3: RAW MATERIAL HANDLING (NEAR ADDITIVE STORAGE)', abbreviation: 'LC3' },
+            { name: 'CEMENT MILL RECIRCULATION BUILDING', abbreviation: 'CMRB' },
+            { name: 'OSS', abbreviation: 'OSS' },
+            { name: 'SURGE HOPPER', abbreviation: 'SH' },
+            { name: 'CLINKER LOADING SILO', abbreviation: 'CLS' },
+            { name: 'CLINKER TRANSFER TOWER', abbreviation: 'CTT' },
+            { name: 'LIMESTONE STACKER AND RECLAIMER', abbreviation: 'LSR' },
+            { name: 'COAL MILL BUILDING', abbreviation: 'CMB' },
+            { name: 'COOLER, ESP & CHIMNEY', abbreviation: 'CCL' },
+            { name: 'MECHANICAL FABRICATION YARD', abbreviation: 'FAB YARD - MECH' },
+            { name: 'RAW COAL HOPPER', abbreviation: 'RCH' },
+            { name: 'COAL BUILDING', abbreviation: 'CB' },
+            { name: 'CEMENT MILL BAG HOUSE AND DUCTING', abbreviation: 'CBH-D' },
+            { name: 'DEEP PAN CONVEYOR (DPC)', abbreviation: 'DPC' },
+            { name: 'CM BAG HOUSE & DUCTING', abbreviation: 'CMBH-D' },
+            { name: 'KILN PIER & TAD', abbreviation: 'KLN' },
+            { name: 'ESP', abbreviation: 'ESP' },
+            { name: 'RM SILO', abbreviation: 'RMS' },
+            { name: 'Others', abbreviation: 'Others' },
+            { name: 'HIGH MAST TOWER', abbreviation: 'High mast tower' },
+            { name: 'LOAD CENTRES- RMH LC NEAR LINE 2 LS STOCK PILE', abbreviation: 'Load Center - 02' },
+            { name: 'LABOUR COLONY', abbreviation: 'LabCol' },
+            { name: 'DUCTING COMPLEX', abbreviation: 'DC' },
+            { name: 'UTILITY PARKING & STORE BUILDING', abbreviation: 'UPSB' },
+            { name: 'WATER STORAGE TANK', abbreviation: 'WST' },
+            { name: 'COAL REJECT BIN', abbreviation: 'CRB' },
+            { name: 'WATER TREATMENT PLANT', abbreviation: 'WTP' },
+            { name: 'CEMENT WAGON LOADING', abbreviation: 'CWL' },
+            { name: 'WAGON TIPPLER', abbreviation: 'WT' },
+            { name: 'CLINKER WAGON LOADING', abbreviation: 'CWL' },
+            { name: 'LOAD CENTER 01A MRSS', abbreviation: 'LC 01A' },
+            { name: 'ROAD', abbreviation: 'ROAD' },
+            { name: 'INDOOR SUB-STATION(MRSS)', abbreviation: 'MRSS' },
+            { name: 'LOAD CENTRES- PACKING PLANT', abbreviation: 'LC-PP' },
+            { name: 'LOAD CENTRES- CEMENT MILL & BAG HOUSE', abbreviation: 'LC-CBH' },
+            { name: 'LOAD CENTRES- KILN COOLER AND COAL MILL', abbreviation: 'LC-KCCM' },
+            { name: 'LOAD CENTRES - RAW MILL CIRCUIT AND BAG HOUSE(INSIDE BUILDING)', abbreviation: 'LC-RMC' },
+            { name: 'LOAD CENTRES- RMH LC NEAR LINE 2 LS STOCK PILE', abbreviation: 'LC-RMH 2' },
+            { name: 'LOAD CENTRES- RMH LC NEAR LINE 1 COAL STOCK PILE', abbreviation: 'LC-RMH 1' },
+            { name: 'LOAD CENTRES- CRUSHER', abbreviation: 'LCC' },
+            { name: 'COAL MILL SUBSTATION', abbreviation: 'CMSS' },
+            { name: 'TRANSMISSION LINE(STRINGING)', abbreviation: 'TL' },
+            { name: 'SWITCHYARD & MRSS', abbreviation: 'SY MRSS' },
+            { name: 'SWITCH YARD', abbreviation: 'SY' },
+            { name: 'MAIN SUBSTATION', abbreviation: 'MSS' },
+            { name: 'PIPE RACKS', abbreviation: 'PR' },
+            { name: 'AIR COOLED CONDENSER-WHRS', abbreviation: 'ACC' },
+            { name: 'TG BUILDING-WHRS', abbreviation: 'TG' },
+            { name: 'AQC BOILER-WHRS', abbreviation: 'AQC' },
+            { name: 'PH-BOILER', abbreviation: 'PHB' },
+            { name: 'CABLE GALLERY', abbreviation: 'CG' },
+            { name: 'CCBC CONVEYORS', abbreviation: 'CCBC CON' },
+            { name: 'BELT CONVEYERS', abbreviation: 'B CON' },
+            { name: 'TRUCK LOADER', abbreviation: 'TrL' },
+            { name: 'PACKING PLANT', abbreviation: 'PPB' },
+            { name: 'FLY ASH SILOS-NOS', abbreviation: 'FAS' },
+            { name: 'CEMENT SILO', abbreviation: 'CSS' },
+            { name: 'CEMENT MILL BAG HOUSE', abbreviation: 'CBH' },
+            { name: 'CEMENT MILL BUILDING', abbreviation: 'CRB' },
+            { name: 'CEMENT MILL BUILDING', abbreviation: 'CMB' },
+            { name: 'CEMENT MILL HOPPER', abbreviation: 'CMH' },
+            { name: 'CLINKER SILO', abbreviation: 'CLT' },
+            { name: 'COAL MILL BAG HOUSE', abbreviation: 'CMBH' },
+            { name: 'COAL MILL FOUNDATION', abbreviation: 'CLM - F' },
+            { name: 'COAL MILL RECIRCULATION BUILDING', abbreviation: 'CMRB' },
+            { name: 'COAL MILL HOPPER', abbreviation: 'CLM' },
+            { name: 'KP3  + TAD', abbreviation: 'KLN' },
+            { name: 'KP2  + TAD', abbreviation: 'KLN' },
+            { name: 'KP1 + TAD', abbreviation: 'KLN' },
+            { name: 'PRE-HEATER BUILDING', abbreviation: 'PHT' },
+            { name: 'BLENDING SILO', abbreviation: 'RMS' },
+            { name: 'RAW MILL BAGHOUSE', abbreviation: 'RBH' },
+            { name: 'RAW MILL BUILDING', abbreviation: 'RMB' },
+            { name: 'RM HOPPER', abbreviation: 'RMH' },
+            { name: 'BOX FEEDER/BRU', abbreviation: 'BRU' },
+            { name: 'ADDITIVE STACKER AND RECLAIMER', abbreviation: 'ASR' },
+            { name: 'COAL RECLAIMER UPGRADATION', abbreviation: 'CRU' },
+            { name: 'REJECT HOPPER (SURGE BIN)', abbreviation: 'RH' },
+            { name: 'LIMESTONE CRUSHER', abbreviation: 'LCH' }
+        ];
+
+        const projectSelect = document.getElementById('projectSelect');
+        const buildingSelect = document.getElementById('buildingSelect');
+        const buildingShortNameSelect = document.getElementById('buildingShortNameSelect');
+        const uploadButton = document.getElementById('uploadButton');
+        const statusText = document.getElementById('statusText');
+
+        function updateBuildingShortName() {
+            const selectedIndex = buildingSelect.value;
+
+            if (selectedIndex === '') {
+                buildingShortNameSelect.innerHTML = '<option value="">Select building first</option>';
+                buildingShortNameSelect.disabled = true;
+                return;
+            }
+
+            const selectedBuilding = buildingDirectory[Number(selectedIndex)];
+            buildingShortNameSelect.innerHTML = `<option value="${selectedBuilding.abbreviation}">${selectedBuilding.abbreviation}</option>`;
+            buildingShortNameSelect.disabled = false;
+        }
+
+        buildingSelect.addEventListener('change', updateBuildingShortName);
+
+        uploadButton.addEventListener('click', function (event) {
+            if (!projectSelect.value || !buildingSelect.value || !buildingShortNameSelect.value) {
+                event.preventDefault();
+                event.stopImmediatePropagation();
+                statusText.textContent = 'Select Project, Building Name and Building Short Name before generating quantities.';
+                statusText.style.color = 'var(--accent)';
+                return;
+            }
+
+            const selectedBuilding = buildingDirectory[Number(buildingSelect.value)];
+
+            localStorage.setItem('dwgSelectedProject', projectSelect.value);
+            localStorage.setItem('dwgSelectedBuilding', selectedBuilding.name);
+            localStorage.setItem('dwgSelectedBuildingShortName', selectedBuilding.abbreviation);
+
+            uploadButton.dataset.project = projectSelect.value;
+            uploadButton.dataset.building = selectedBuilding.name;
+            uploadButton.dataset.buildingShortName = selectedBuilding.abbreviation;
+        }, true);
+    </script>
+</body>
+
+</html>
